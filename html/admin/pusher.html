@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>信息推送</title>
+    <link rel="stylesheet" type="text/css" href="/html/ui/default.css">
+    <script src="/html/Part/JPartCore.js"></script>
+    <script src="/html/Part/JTable.js"></script>
+    <script>
+        var pusher = {}
+        var config = {
+            keys: ["pid", "title", "body", "image", "category", "push", "status", "edit"],
+            alias: ["索引", "标题", "内容", "图片", "类别", "时间", "状态", "编辑"],
+        }
+        var format = function (data) {
+            if (!(data instanceof Array)) {
+                return data
+            }
+
+            // 保存
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i]
+                // 加编辑按钮
+                var s = JSON.stringify(obj)
+                s = Web.StringToBase64(s)
+                // 处理状态显示文字
+                obj.status = obj.status == 1 ? "有效" : "无效"
+                // 处理图片显示
+                var img = new HTML("img")
+                img.AddAttr("src",obj.image.substr(1))
+                obj.image = img
+                var edit = new HTML("button", "编辑")
+                edit.AddAttr("onclick", "edit(this, '" + s + "')")
+                obj.edit = edit
+
+            }
+            return data
+        }
+
+        var edit = function (it, s) {
+            s = Web.Base64ToString(s)
+            pusher = JSON.parse(s)
+            Web.Parse("#form")
+        }
+
+        // 表单过滤函数
+        var filter = function (it) {
+            var push = it.querySelector("[name='push']").value
+            if(!push){
+                Web.Alert("日期项不能为空")
+                return false
+            }
+            var title = it.querySelector("[name='title']").value
+            if(!title){
+                Web.Alert("标题项不能为空")
+                return false
+            }
+            return true
+        }
+
+        // 提交完成处理
+        var router = function (data, it) {
+            // 请求失败
+            if (data.code == 0) {
+                Web.Alert(data.info)
+                return
+            }
+            Web.Alert("数据提交成功")
+            Web.Parse("#list")
+        }
+    </script>
+</head>
+<body>
+
+<!--广告-->
+<table class="full content">
+    <tr>
+        <!--表单区-->
+        <td id="left" class="percentage30">
+            <form id="form" data-source="$pusher" data-form-action="/upload.php?handle=Pusher&func=SetData"
+                  data-form-filter="filter" data-form-router="router">
+                <input type="hidden" name="pid">
+                <input type="hidden" name="path" value="pusher">
+                <table class="full">
+                    <thead>
+                    <tr>
+                        <th colspan="2">
+                            <button type="submit">提交</button>&nbsp;<button type="reset" onclick="data=null">重置</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="right percentage25">时间</td>
+                        <td><input name="push" type="datetime-local"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">标题</td>
+                        <td><input name="title" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">内容</td>
+                        <td><input name="body" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">类别</td>
+                        <td><input name="category" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">图片</td>
+                        <td><span style="font-size: 12px">尺寸：900 x 500</span><br><input name="image" type="file" accept="image/png,image/gif" onchange=""></td>
+                    </tr>
+                    <tr>
+                        <td class="right">状态</td>
+                        <td>
+                            <select name="status">
+                                <option value="1">有效</option>
+                                <option value="0">无效</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </td>
+        <!--表格区-->
+        <td id="right">
+            <div id="list" data-part="JTable" data-source="@/admin.php?handle=Pusher&func=GetAll" data-config="$config"
+                 data-func="format()"></div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

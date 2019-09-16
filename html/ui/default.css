@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+}
+
+/* 未被访问的链接 */
+a:link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* 已被访问的链接 */
+a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* 鼠标指针移动到链接上 */
+a:hover {
+    color: #FF0;
+    text-decoration: none;
+}
+
+/* 正在被点击的链接 */
+a:active {
+    color: #F80;
+    text-decoration: none;
+}
+
+table{
+    border-collapse: collapse;
+}
+th{
+    height: 50px;
+    background: #888888;
+    color: #FFFFFF;
+}
+
+td{
+    text-align: center;
+}
+
+td img{
+    height: 40px;
+    margin-top: 5px;
+}
+
+.full{
+    width: 100%;
+}
+
+.right{
+    text-align: right;
+}
+
+.left{
+    text-align: left;
+}
+
+
+.percentage30{
+    width: 30%;
+}
+
+.percentage45{
+    width: 45%;
+}
+
+.percentage25{
+    width: 25%;
+}
+.selected{
+    background: #ff0;
+}
+
+
+/* 菜单 */
+nav {
+    padding: 25px 20px 20px 20px;
+    background: #333;
+    height: 30px;
+}
+
+nav span {
+    margin: 10px;
+}
+
+
+/* 页面区 */
+iframe {
+    border-width: 0;
+    width:100%;
+}
+
+td#right, td#left{
+    vertical-align: top;
+}
+
+#left p {
+    text-align: center;
+}
+
+#left input, #left select{
+    width: 180px;
+}
+#left label{
+    display: inline-block;
+    width: 60px;
+}
+#left td{
+    height: 35px;
+}
+#left button{
+    width: 100px;
+}
+
+#right table{
+    width:100%;
+}
+
+#right tbody td {
+    border-bottom:solid #aaaaaa 1px;
+    height: 35px;
+    background: #eee;
+}
+
+#right tr:nth-child(odd) td{
+    background: #fff;
+}
+#right tr.clicked {
+    background-color: #abc;
+}
+.explain{
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+

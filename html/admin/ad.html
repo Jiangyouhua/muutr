@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>广告管理</title>
+    <link rel="stylesheet" type="text/css" href="/html/ui/default.css">
+    <script src="/html/Part/JPartCore.js"></script>
+    <script src="/html/Part/JTable.js"></script>
+    <script>
+        var ad = {}
+        var config = {
+            keys: ["aid", "start", "end", "image", "link", "status", "edit"],
+            alias: ["索引", "开始", "结束", "文件", "链接", "状态", "编辑"],
+        }
+        var format = function (data) {
+            if (!(data instanceof Array)) {
+                return data
+            }
+
+            // 保存
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i]
+                // 数据字符串化
+                obj.start = obj.start.replace(" ", "T")
+                obj.end = obj.end.replace(" ", "T")
+                var s = JSON.stringify(obj)
+                s = Web.StringToBase64(s)
+
+                // 处理状态显示文字
+                obj.status = obj.status == 1 ? "有效" : "无效"
+                // 处理图片显示
+                var img = new HTML("img")
+                img.AddAttr("src", obj.image.substr(1))
+                obj.image = img
+                // 处理时间
+                obj.start = obj.start.replace("T", " ")
+                obj.end = obj.end.replace("T", " ")
+                // 添加编辑项
+                var edit = new HTML("button", "编辑")
+                edit.AddAttr("onclick", "edit(this, '" + s + "')")
+                obj.edit = edit
+
+            }
+            return data
+        }
+
+        var edit = function (it, s) {
+            s = Web.Base64ToString(s)
+            ad = JSON.parse(s)
+            Web.Parse("#form")
+        }
+
+        // 表单过滤函数
+        var filter = function (it) {
+            var start = it.querySelector("[name='start']").value
+            if (!start) {
+                Web.Alert("日期项不能为空")
+                return false
+            }
+            var end = it.querySelector("[name='end']").value
+            if (!end) {
+                Web.Alert("日期项不能为空")
+                return false
+            }
+            var link = it.querySelector("[name='link']").value
+            if (!link) {
+                Web.Alert("时间项不能为空")
+                return false
+            }
+            return true
+        }
+
+        // 提交完成处理
+        var router = function (data, it) {
+            // 请求失败
+            if (data.code == 0) {
+                Web.Alert(data.info)
+                return
+            }
+            Web.Alert("数据提交成功")
+            Web.Parse("#list")
+        }
+    </script>
+</head>
+<body>
+
+<!--广告-->
+<table class="full content">
+    <tr>
+        <!--表单区-->
+        <td id="left" class="percentage30">
+            <form id="form" data-source="$ad" data-form-action="/upload.php?handle=Ad&func=SetData"
+                  data-form-filter="filter" data-form-router="router">
+                <input type="hidden" name="aid">
+                <input type="hidden" name="path" value="ad">
+                <table class="full">
+                    <thead>
+                    <tr>
+                        <th colspan="2">
+                            <button type="submit">提交</button>&nbsp;<button type="reset" onclick="data=null">重置</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2">请留意图片的尺寸375*580的1、2、3倍</td>
+                    </tr>
+                    <tr>
+                        <td class="right percentage25">开始</td>
+                        <td><input name="start" type="datetime-local"></td>
+                    </tr>
+                    <tr>
+                        <td class="right percentage25">结束</td>
+                        <td><input name="end" type="datetime-local"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">链接</td>
+                        <td><input name="link" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">图片</td>
+                        <td><input name="image" type="file" accept="image/png,image/jpg"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">状态</td>
+                        <td>
+                            <select name="status">
+                                <option value="1">有效</option>
+                                <option value="0">无效</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </td>
+        <!--表格区-->
+        <td id="right">
+            <div id="list" data-part="JTable" data-source="@/admin.php?handle=Ad&func=GetAll" data-config="$config"
+                 data-func="format()"></div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>目图</title>
+    <style>
+        *{margin:0;padding:0;}
+        body{
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            font: 100% "Microsoft YaHei", 微软雅黑, arial, simsun, 宋体;
+            font-weight: 100;
+            color: #222;
+            line-height: 180%;
+        }
+        table{
+            width: 960px;
+            border:0;
+            border-collapse:collapse;
+        }
+
+        a:link {
+            color:#000000;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:visited {
+            color:#000000;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:hover {
+            color:#dddddd;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:active {
+            color:#eeeeee;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        .w100{
+            max-width: 100%;
+        }
+        .font200{
+            font-size: 200%;
+            font-weight: 100;
+        }
+        span{
+            vertical-align: top;
+            display: inline-block;
+        }
+        .border{
+            border:1px solid #eeeeee;
+            padding: 0;
+        }
+        .main{
+            width: 960px;
+            text-align: center;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 10px;
+        }
+        #top{
+            background-color: olivedrab;
+            height: 5px;
+        }
+        .assist{
+            background-color: #444444;
+            height: 80px;
+            color:#dddddd;
+        }
+        .left{
+            text-align: left;
+        }
+        .right{
+            text-align:right;
+        }
+        .ad{
+            text-align: center;
+            background-color: RGB(30,35,40);
+            height: 300px;
+        }
+        .menu{
+            background-color: olivedrab;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+        }
+        .table td{
+            border-bottom: 1px solid #aaaaaa;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .table th{
+            border-bottom: 1px solid #aaaaaa;
+            border-top: 2px solid #aaaaaa;
+        }
+        .about{
+            background-image: url("/html/image/pageWeb.png");
+            background-position: right bottom;
+            background-repeat: no-repeat;
+            background-size:auto 350px;
+            -moz-background-size:auto 100%;
+            text-align: left;
+        }
+        .scene{
+            color: white;
+            padding-top: 20px;
+            vertical-align: top;
+            margin:0 2px 2px 2px;
+            height: 300px;
+        }
+        .title{
+            font-size: 150%;
+            font-weight: 100;
+            padding: 50px 0 20px 0;
+            color: olivedrab;
+            text-align: left;
+        }
+        .explain{
+            padding: 0 0 10px 0;
+            text-align: left;
+        }
+        .user{
+            width: 166px;
+            height: 301px;
+            background-image: url("/html/image/userWeb.png");
+            background-size: 183px 384px;
+            background-repeat: no-repeat;
+            padding: 45px 9px 45px 9px;
+            display: inline-block;
+            margin: 4px;
+        }
+        .pad20{
+            padding: 10px 20px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .line{
+            height: 1px;
+            background-color: #dddddd;
+            margin-bottom: 20px;
+        }
+        b{
+            color: #000000;
+        }
+        .footer{
+            margin: 20px;
+            font-weight: 100;
+            display: inline-block;  
+        }
+        .toTop{
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            font-size: 200%;
+            font-weight: 100;
+        }
+        .logoText{
+            display: inline-block;
+            width: 90px;
+            height: 30px;
+            vertical-align: bottom;
+            background-image: url("/html/image/logoText.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+    <script src="//html/Part/JPartCore.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <div id="top"></div>
+    <div class="assist">
+        <div class="main">
+            <table width="980">
+                <tr>
+                    <td class="left" height="80"><img src="/html/image/logo_cn.png" height="60"></td>
+                    <td class="right">我们的小助理&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/html/app/index.html">🇺🇸</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- AD -->
+    <div class="ad">
+        <div class="main"> <img src="/html/image/adWeb.png" height="300"></div>
+    </div>
+    <!-- menu -->
+    <div class="menu">
+        <div class="main">
+            <table width="980">
+                <tr>
+                    <td><a href="#about">前言</a></td>
+                    <td><a href="#target">目标用户</a></td>
+                    <td><a href="#scene">应用场景</a></td>
+                    <td><a href="#function">主要功能</a></td>
+                    <td><a href="#team">功能•团队协作</a></td>
+                    <td><a href="#object">功能•跟踪目标</a></td>
+                    <td><a href="#note">功能•笔记收支</a></td>
+                    <td><a href="#other">功能•其它</a></td>
+                    <td><a href="#last">最后</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="main">
+        <table id="download">
+            <tr>
+                <td class="title" colspan="3">
+                      目图是一种执着
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-right: 10px"><img class="border" src="/html/image/logoWeb.png" width="300"> </td>
+                <td class="left">
+                    目图，是精心为个人或小团队打造的，<br>
+                    目标管理、协同合作与沟通的平台。<br>
+                    它能帮助个人或小团队降低工作、沟通与管理成本，<br>
+                    提升工作效率，提高任务或工作的完成度，<br>
+                    促进个人与小团队目标的实现。<br><br>
+                    安装iOS版本。请<b>扫描二维码</b>，通过苹果市场安装。
+                </td>
+                <td valign="top"><a href="/.well-known/apple-app-site-association"><img src="/html/image/code.png" width="200"></a></td>
+            </tr>
+        </table>
+        <br>
+        <div class="line"></div>
+        <div id="about" class="title">Forward 前言</div>
+        <table>
+            <tr>
+                <td colspan="3" class="about">
+                    目图是一款效率APP。也是我近年想要实现的第一个目标。<br>
+
+                    生活中，我们不断的有目标需要去实现，有自己的、自己与朋友的、自己与团队的。我一直想做一款APP，去帮助我们更好、更快的实现目标。<br>
+
+                    例如，最近我有健身的目标，目图能帮助我：<br>
+                    1、 分类管理：我以前有学习的目标，现在添加一个健身的目标。<br>
+                    2、 制定目标，确定目标的周期性：制定健身目标，确定每周一、三、五晚上8:30前，完成在健身房锻炼身体一个半小时。<br>
+                    3、 Check目标的每一个周期：每天，打开APP，目图都会提醒你，这一次的健身任务完成了吗？它还会提供至截止时间的倒计时？<br>
+                    4、 记录进程中的点滴：健身老师说，起步要慢一些；<br>
+                    5、 记下进程中的收支：买了一双跑步鞋，支出588元；<br>
+                    6、 能提醒你：这几天比较忙别忘了，于是在目图上设置任务截止时间前2个小时提醒自己；<br>
+                    7、 能帮你倒计时：目图告诉你，一个小时的跑步时间到了。该去做瑜伽了；<br>
+                    8、 能与志同道合的人一起前进：把蜜蜜加到健身类中来，我们一起来健身。类内有两个以上的伙伴就该称为群；<br>
+                    9、 能与共同利益的人组成团队：把我和蜜蜜的健身老师加到健身群中来；<br>
+                    10、能实现分工合作：健身老师可不需要跑步和做瑜伽，只需要盯着我们就行，所以他没有认领跑步和做瑜伽的任务；<br>
+                    11、能知道群里伙伴的任务状态：蜜蜜没有完成昨天的健身房一个半小时的健身任务呀；<br>
+                    12、能与群里的伙伴进行交流：谁知道，蜜蜜昨天为什么没去健身房锻炼呀？<br>
+                    13、能与群里的伙伴进行私聊：蜜蜜，我想跟你说个密秘；<br>
+                    14、能隐藏你的身份：群内伙伴只知道你的呢称或加密的账户；<br>
+
+                    于是，2017年4月份开始，我决定做这目图。<br>
+                    整整一年，才完成上线，提交上线的时间是2018年5月份。<br>
+                    我使用目图进行了它自己的上线测试管理，感觉比较好。<br>
+
+                </td>
+            </tr>
+        </table>
+
+        <div id="target" class="title">Target Audience 目标用户</div>
+        <table>
+            <tr>
+                <td colspan="4" class="left">
+                    目图是为你准备的。当你确定了追求的目标，并愿意为之努力，一步步坚持下去直到实现，你就是目图的目标对象。目图能帮助你，让你成为目标坚定、意志强悍、思想伟大、行动持恒的人。<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img class="border" src="/html/image/guideYou1.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou2.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou3.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou4.png" width="238"></td>
+            </tr>
+        </table>
+
+        <div id="scene" class="title">Application Scenarios 应用场景</div>
+        <table>
+            <tr>
+                <td colspan="6" class="left">
+                    目图就在你身边。无论你是为了学习、工作、生活、健康、兴趣还是为了你的团队，它一直都在你身边。它可以帮助你制定并实施你的学习计划、工作规划、生活安排、健康习惯、兴趣方向、团队合作等。<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="/html/image/sceneWeb1.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb2.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb3.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb4.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb5.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb6.png" width="157"></td>
+            </tr>
+            <tr>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(89,117,157,.3); vertical-align: top">Study</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(94,77,70,.3);">Work</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(158,119,88,.3);">Live</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(157,72,51,.3);">Health</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(145,108,53,.3);">Interest</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(197,129,120,.3);">Team</div></td>
+            </tr>
+        </table>
+
+        <div id="function" class="title">Main Function 主要功能</div>
+        <table>
+            <tr>
+                <td colspan="5" class="left">
+                    目图支持着你。目图提供了群(分类)、任务（目标）、任务卡（目标卡）、聊天室（类备注）、笔记与收支、搜索任务（目标）、倒计时闹钟、二维码扫描等主要功能。目图帮助你去更好、更有效地安排、管理、执行你的任务（目标），让你更好地成长。<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="/html/image/online1.png" width="190"></td>
+                <td><img src="/html/image/online2.png" width="190"></td>
+                <td><img src="/html/image/online3.png" width="190"></td>
+                <td><img src="/html/image/online4.png" width="190"></td>
+                <td><img src="/html/image/online5.png" width="190"></td>
+            </tr>
+            <tr>
+                <td><img src="/html/image/online6.png" width="190"></td>
+                <td><img src="/html/image/online7.png" width="190"></td>
+                <td><img src="/html/image/online8.png" width="190"></td>
+                <td><img src="/html/image/online9.png" width="190"></td>
+                <td><img src="/html/image/online10.png" width="190"></td>
+            </tr>
+        </table>
+        <br>
+        <table><tr>
+        <td class="left"><b>目图的主要功能列表：</b><br><br></td>
+        <tr>
+            <td>
+        <table class="table">
+            <tr>
+                <th width="30" height="50">ID</th><th width="180">功能</th><th width="370">团队</th><th>个人</th>
+            </tr>
+            <tr>
+                <td>1</td><td>群（分类）</td>
+                <td>添加群组、修改群组名称、退出群组、为首页群组标签栏排序</td>
+                <td>添加分类、修改分类名称、删除分类、为首页分类标签栏排序</td>
+            </tr>
+            <tr>
+                <td>2</td><td>任务（目标）</td>
+                <td>添加或修改任务（有：任务说明、重复方式、起止日期、截止时间等）、认领或放弃认领任务、关闭任务，调置截止时间前24内的提醒服务</td>
+                <td>添加或修改目标（有：目标说明、重复方式、起止日期、截止时间等）、激活或放弃激活目标、删除目标，调置截止时间前24内的提醒服务</td>
+            </tr>
+            <tr>
+                <td>3</td><td>任务卡（目标卡）</td>
+                <td>有<b>首页任务卡</b>与<b>周期页任务卡</b><br><b>首页任务卡</b>：左则为最近任务状态（倒计时/OUT、OK两种状态），右则为任务说明、周期的日期、最近周期的截止时间、提醒时间及伙伴完成名单。<br><b>周期页任务卡</b>：左则为历史周期任务状态（倒计时/OUT、OK两种状态），右则为各周期的截止日期、时间及伙伴完成名单。 <br>点击任务状态确认本周期任务是否完成。</td>
+                <td>有<b>首页目标卡</b>与<b>周期页目标卡</b><br><b>首页目标卡</b>：左则为最近目标状态（倒计时/OUT、OK两种状态），右则为目标说明、周期的日期、最近周期的截止时间、提醒时间及伙伴完成名单。<br><b>周期页目标卡</b>：左则为历史周期目标状态（倒计时/OUT、OK两种状态），右则为各周期的截止日期、时间及伙伴完成名单。 <br>点击目标状态确认本周期目标是否完成。</td>
+            </tr>
+            <tr>
+                <td>4</td><td>聊天室（类备注）</td>
+                <td>群聊天室、群内伙伴可在此发送文本、图片、照相、录音、录频、涂鸦、地理位置为内容的信息。同时可以@部分伙伴进行私聊，及发送分享至社交APP邀请好友加入群。</td>
+                <td>在此发送文本、图片、照相、录音、录频、涂鸦、地理位置为内容做本分类的备注信息。</td>
+            </tr>
+            <tr>
+                <td>5</td><td>笔记与收支</td>
+                <td>在各任务中，以文本、图片、照相、录音、录频、涂鸦、地理位置为内容作笔记。可为每一条笔记添加收支，并形成收支的总月报表、群月报表、任务月报表。</td>
+                <td>在各目标中，以文本、图片、照相、录音、录频、涂鸦、地理位置为内容作笔记。可为每一条笔记添加收支，并形成收支的总月报表、分类月报表、目标月报表。</td>
+            </tr>
+            <tr>
+                <td>6</td><td>搜索任务（目标）</td>
+                <td>以任务说明中的关键词，进行任务搜索。</td>
+                <td>以目标说明中的关键词，进行目标搜索。</td>
+            </tr>
+            <tr>
+                <td>7</td><td>倒计时闹钟</td><td colspan="2">提供一个24小时内的倒计闹钟。支持同时设置多个闹钟，并呈现各自的倒计时状态。</td>
+            </tr>
+            <tr>
+                <td>8</td><td>二维码扫码</td><td colspan="2">提供二维码扫码功能，同时实现了扫目图提供的群二维码加入到该群中来的功能。</td>
+            </tr>
+
+        </table>
+            </td>
+        </tr>
+            <tr>
+        <td class="left">
+            <br>
+            <p><b>目图具有一定的封闭性：</b></p><br>
+            <p>1、目图里笔记与聊天室（类备注）中的内容不可复制。</p>
+            <p>2、目图里笔记与聊天室（类备注）中的文字、图片、照片、音频、视频、涂鸦、地理位置保存在目图里，不能被第三方软件引用。</p>
+            <p>3、目图只需要个人账号与密码信息，没有设置更多个人信息的功能，同时个人账号与密码信息不与其它用户共享。</p>
+            <p>4、目图里群内伙伴间的交流仅基于聊天室，没有与"添加好友"相似的功能。关闭群后，你与群里伙伴的关系恢复到原始状态。</p>
+        </td>
+            </tr>
+        </table>
+        <br>
+        <table><tr><td id="team" class="font200" style="color: #ffffff; background-color: lightsalmon; padding: 20px">操作指南以团队作应用说明，请留意！</td></tr></table>
+
+        <div class="title">Team Work 团队协作</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    目图支持团队协作。一个分类下面存在多个用户，分类就变为群，用户成为群里的伙伴，伙伴之间可以实现团队协作。伙们可以为团队添加任务，可以认领或放弃认领任务，可以查看任务中各个周期伙伴的完成情况，可以在聊天室一起沟通交流，可以@部分伙伴进行私聊。这些功能简单的实现了群内伙伴间的团队协作。
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. <b>进入群设置页</b>：首页，点击页面顶部工具栏中的<b>+号按钮</b>，进入群设置页。</td>
+                <td class="pad20">2. <b>添加群</b>：群设置页，点击标题栏下的<b>+号按钮</b>，可新添一个群。</td>
+                <td class="pad20">3. <b>设置群</b>：群设置页，点击<b>群名称</b>可修改群名称；点击<b>排序</b>可排序群名称，该顺序影响到首页标签栏中群名称的顺序；左滑<b>群名称</b>显示删除按钮，点击<b>删除按钮</b>，删除或关闭该群。</td>
+                <td class="pad20">4. <b>进入任务页</b>：首页，添加群后，可以看到标签栏上不同颜色的群名称标签。其下区域为任务区，可点击右下角的<b>+号按钮</b>，进入任务设置页。</td>
+                <td class="pad20">5. <b>添加任务</b>：任务页，在<b>加号标签</b>下可新建一个任务。新建任务时有任务说明、重复周期、开始日期、结束日期、截止时间等可设置。</td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/05.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/06.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/07.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/08.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/09.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">6. <b>管理任务</b>：任务页，在<b>心号标签</b>下显示当前群的所有任务。点击各栏右则<b>认领按钮</b>可以领取该任务；点击各栏右则<b>己领按钮</b>可以放弃领取该任务；左滑<b>己领任务</b>显示编辑按钮，点击<b>编辑按钮</b>重新编辑该任务；左滑<b>认领任务</b>显示关闭按钮，点击<b>关闭按钮</b>关闭该任务，该任务将对你不可见。</td>
+                <td class="pad20">7. <b>任务卡</b>：首页，添加任务后，标签栏下的任务区中显示有任务卡。任务卡左则为最近任务状态（倒计时/OUT、OK两种状态），右则为任务说明、任务的起止时间、重复周期的日期、最近周期的日期、最近周期的截止时间、提醒时间及伙伴完成名单。</td>
+                <td class="pad20">8. <b>聊天室</b>：首页，点击任务区右下角的<b>信息框按钮</b>,进入群聊天室页。群内伙伴可在此发送文本、图片、照相、录音、录频、涂鸦、地理位置为内容的信息，并为录音信息提供未听标识。</td>
+                <td class="pad20">9. <b>@伙伴</b>：聊天室页，点击顶部<b>标题栏</b>进入@伙伴页。@伙伴页中心区为伙伴名称，你可以选择需要@的伙伴。从@伙伴页返回聊天室页时，标题栏显示部分已选伙伴名单，现在发送的信息，只对选择的伙伴可见，即实现私聊。</td>
+                <td class="pad20">10.<b>加入群</b>：聊天室页，点击顶部右上角<b>更多按钮</b>进入群信息页。在群信息页中有两种方式让伙伴加入群：<br>1. 点击<b>群二维码</b>栏中的<b>显示按钮</b>显示群二维码，伙伴通过目图的二维码扫描功能可实现加入群；<br>2. 点击<b>分享给朋友</b>栏中的<b>分享按钮</b>分享群信息至第三方，通过安装目图加入群。</td>
+
+            </tr>
+        </table>
+
+        <div id="object" class="title">Tracking goals 跟踪任务</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    目图全力为你跟踪任务。设置好的任务，目图会随着时间的推进，按各个任务设置的重复周期项生成任务卡。任务卡具有周期性、时效性。其中，首页的任务卡需要你Check当前周期的任务状态；周期页的任务卡需要Check历史周期的任务状态。目图还为各任务提供提醒功能，在预定的时间提醒你，该去完成当前周期的任务。
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/06.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. <b>加载任务卡</b>：首页，标签栏下方有时间轴。时间轴的时间跨度为6个月（半年），任务区加载当前任务周期在这6个月内的首页任务卡。左右滑动<b>时间轴</b>，可改变时间轴上的时间，同时对应改变了任务区上加载的首页任务卡。</td>
+                <td class="pad20">2. <b>Check当前任务</b>：首页，任务卡左则显示最近任务状态（倒计时/OUT、OK两种状态），完成该周期任务显示OK，未完成则显示至本期截止时间的倒计时，超时的显示OUT。点击<b>最近任务状态</b>确定是否完成最近的周期任务。</td>
+                <td class="pad20">3. <b>Check历史任务</b>：首页，点击<b>任务卡右则</b>进入笔记页。在笔记页里切换到<b>周期标签</b>，周期标签下显示的是周期任务卡。周期任务卡与首页任务卡相似，点击<b>周期任务状态</b>确定是否完成该周期任务。</td>
+                <td class="pad20">4. <b>添加提醒</b>：笔记页，在笔记页里切换到<b>提醒标签</b>，提醒标签下可添加、修改任务提醒，已设置任务提醒的，可点击提醒说明右则的<b>删除按钮</b>删除该任务提醒。提醒在各周期截止时间前24小时以内以系统信息的方式发送。</td>
+                <td class="pad20">5. <b>关闭所有提醒</b>：关于页，点击首页工具栏最左<b>关于按钮</b>进入关于页。在关于页点击<b>后台提醒</b>栏的开关按钮，可关闭或开启已设置的所有提醒。</td>
+
+            </tr>
+        </table>
+
+        <div id="note" class="title">Note And Money 笔记与收支</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    目图笔记与收支功能，支持以任务为基础添加笔记与收支。可以添加文字、录音、照相、录频、涂鸦、地理位置等信息作笔记。同时可在各笔记上添加收支，添加的收支自动生成月报表，可查看各报表。支持对笔记的删除，删除笔记同时删除了收支。
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. <b>进入笔记页</b>：首页，点击任务区<b>任务卡右则</b>，进入笔记页。在笔记页切换到<b>笔记标签</b>，笔记标签下显示该任务的最近笔记，上拉可加较早前笔记。</td>
+                <td class="pad20">2. <b>添加笔记</b>：笔记页，笔记标签下为编辑区，编辑区提供以文字、录音、照相、录频、涂鸦、地理位置信息作笔记的功能。已添加的笔记按提交时间的近远从上到下排列。</td>
+                <td class="pad20">3. <b>添加收支</b>：笔记页，编辑区下方是笔记区，在笔记区上点击笔记卡右上角<b>文字</b>，可为该笔记添加或修改收支的金额。</td>
+                <td class="pad20">4. <b>删除笔记</b>：笔记页，编辑区下方是笔记区，在笔记区上点击笔记卡左上角<b>删除按钮</b>，可删除该笔记，删除笔记同时删除了该笔记上的收支。</td>
+                <td class="pad20">5. <b>查看收支报表</b>：笔记页，点击页面顶部左上角<b>$号按钮</b>进入收支报表页，收支报表页显示当前任务的收支月报表。也可在关于页查看收支总报表。</td>
+            </tr>
+        </table>
+
+        <div id="other" class="title">Other Function 其它功能</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    目图其它功能帮助你。提供任务搜索、24内倒计时闹钟及二维码扫描等功能.
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. <b>搜索任务</b>：首页，点击工具栏的<b>搜索按钮</b>进入搜索任务页，在搜索任务页顶部的搜索框中输入任务说明中包含的关键词，可搜索相关任务。</td>
+                <td class="pad20">2. <b>倒计时闹钟</b>：首页，点击工具栏的<b>闹钟按钮</b>进入闹钟页，在闹钟页切换至<b>+号标签</b>,+号标签下可添加24小时间内的倒计时闹钟。</td>
+                <td class="pad20">3. <b>查看倒计时闹钟</b>：闹钟页，在闹钟页切换<b>-号标签</b>,-号标签下可查看所有有效的闹钟。列表左则有说明信息、倒计时时间、发起时间与结束时间。</td>
+                <td class="pad20">4. <b>删除倒计时闹钟</b>：闹钟页，在闹钟页切换<b>-号标签</b>,-号标签下列表右则有删除按钮与重启按钮，点击<b>删除按钮</b>可删除该闹钟，点击<b>重启按钮</b>可重启该闹钟。</td>
+                <td class="pad20">5. <b>扫描二维码</b>：首页，点击工具栏的<b>扫描按钮</b>进入二维码扫描页。二维码扫描页中心区域有扫描区，对准二维码可实现二维码扫描。</td>
+            </tr>
+        </table>
+
+        <div id="last" class="title">The Last 最后</div>
+        <table>
+            <tr>
+                <td colspan="3" class="explain">
+                     目图的吉祥物是木头人，家里的小朋友非常喜欢和我们玩"木头人"这个游戏。我更喜欢这个游戏的精神与形式，它跟这个APP非常像：你前进的每一步需要认真对待，只有做好每一步才能接近目标，有机制在检查你的努力；你可以一个人进前，也可以跟一帮人一起进前，你们可是共进关系也可以是团队关系。如此等等。还有是，我听说有<b>目图</b>这个词，词典上的解释是“眼前的计划谋略”。我也很喜欢，只是听说这个词的人太少，所以没有用目图人，用了谐音的目图。总之：<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td class="right font200" width="330">
+                    我已经为你打点好
+                </td>
+                <td><img src="/html/image/aboutWeb.png" height="258"></td>
+                <td class="left font200" width="330">
+                    师傅，我们出发吧
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div class="line"></div>
+        <span class="footer"><a href="http://www.miitbeian.gov.cn/"> 鄂ICP备18004060号-1</a></span>
+    </div>
+    <div class="toTop"><a href="#top"> TOP </a></div>
+</body>
+</html>

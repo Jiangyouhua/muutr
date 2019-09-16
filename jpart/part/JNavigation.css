@@ -1,0 +1,10 @@
+[data-part="JNavigation"] a{
+    display: inline-block;
+    line-height: 5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+[data-part="JNavigation"] a.action{
+    border-bottom: #333333 .1rem solid;
+}

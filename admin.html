@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="UTF-8"/>
+<title>JPart-Exampless</title>
+<style>
+    #float{
+        position: absolute;
+        width: 420px;
+        height: 300px;
+        left: 50%;
+        top:50%;
+        margin-top:-160px;
+        margin-left: -210px;
+        background: #eee;
+        border-radius:10px;
+    }
+    h1{
+        text-align: center;
+        background: #333333;
+        margin: 0;
+        color: #FFFFFF;
+        padding: 17px;
+        font-weight: 100;
+        border-radius: 10px 10px 0 0;
+    }
+    p{
+        text-align: center;
+        height: 40px;
+        font-size: 18px;
+    }
+    p input{
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        border: solid #aaaaaa thin;
+        padding: 0 5px;
+    }
+    p button{
+        width: 260px;
+        height: 30px;
+        border-radius: 5px;
+        border: solid #aaaaaa thin;
+        font-size: 16px;
+    }
+</style>
+<script src="/html/Part/JPartCore.js"></script>
+<script>
+    function router(data, it) {
+        // 请求失败
+        if (data.code == 0) {
+            var times = sessionStorage.getItem("times")
+            times++
+            if (times > 5) {
+                window.location.href = "/index.html"
+            }
+            sessionStorage.setItem("times", times)
+            return;
+        }
+        sessionStorage.setItem("user", data.data.user)
+        sessionStorage.setItem("role", data.data.role)
+        window.location.href = "/html/admin/index.html"
+    }
+    
+    function filter(it) {
+        var user = it.querySelector("[name='user']").value
+        if (user.length < 11){
+            Web.Alert("帐户不合格")
+            return false
+        }
+        var code = it.querySelector("[name='code']").value
+        if(code.length < 6){
+            Web.Alert("密码不能少于6位")
+            return false
+        }
+        return true
+    }
+    window.onload = function(){
+        var a = Web.Url("alert")
+        if (!!a){
+            Web.Alert(decodeURI(a))
+        }
+    }
+</script>
+
+<body>
+<div id="float">
+    <h1>后台登录</h1>
+    <form data-form-action="/back.php?handle=Anonymously&func=Login" data-form-filter="filter" data-form-router="router">
+        <p style="height: 1px"></p>
+        <p><label for="user">帐户：</label><input type="text" id="user" name="user" value=""></p>
+        <p><label for="code">名称：</label><input type="password" id="code" name="code" value=""></p>
+        <p><button type="submit">提交</button></p>
+    </form>
+</div>
+</body>
+
+</html>

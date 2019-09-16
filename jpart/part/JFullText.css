@@ -1,0 +1,16 @@
+[data-part="JFullText"]{
+    padding: 6rem 0;
+}
+
+[data-part="JFullText"] .title{
+    text-align: center;
+    font-size: 5rem;
+    color: #666;
+}
+
+[data-part="JFullText"] .subtitle{
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 2rem;
+    color: #888888;
+}

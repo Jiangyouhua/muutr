@@ -1,0 +1,839 @@
+<div class="document">
+    <table>
+        <tr>
+            <td>
+                <div class="left-side">
+                <div id="document-top" data-source="$jp.banner2" data-part="JBanner"></div>
+                <div data-part="JList" data-source="$jp.catalog"></div>
+                <p>&nbsp;</p>
+                <hr>
+                <div>Document 1.0</div>
+                <p>&nbsp;</p>
+                </div>
+            </td>
+            <td class="article">
+                <!-- 文件说明 -->
+                <br>
+                <b style="float: right;">示例所有数据基于对象jp设置，该处理用来避免JS中同名数据重复加载产生的错误</b><br>
+                <h1 id="document-start">概述</h1>
+                <p><span data-source=$jp.logo></span> 是一款极期简单的前端框架，彻底实现JavaScript、HTML、css分开。基本应用中您只需要了解六个自定的HTML属性。如果您想开发组件，您才需要了解 <span data-source=$jp.logo></span> 中PART类的继承规范。所以您可以在极短的时间内熟悉它，在应用之前您需要下 <span data-source=$jp.logo></span> 核心库，并在页面中加载它。</p>
+                <code> &lt;script <b>src='./jpartcore.js'</b> &gt;&lt;/script&gt;</code>
+                <hr><br>
+                <h1 id="page-design">HTML应用</h1>
+                <strong>将 <span data-source=$jp.logo></span> 应用在页面上，您只需要解了6个属性</strong>
+                <p>这6个自定义的属性分别是：<a>data-source</a>, <a>data-func</a>, <a>data-back</a>, <a>data-affect</a>, <a>data-part</a>, <a>data-config</a>。您可以在任何标签中任务它, 下面将逐个说明其作用。</p>
+                <hr><br>
+                <h2 id="data-source">一、data-source 属性值指定数据源，解析得到的数据定义为<b>源数据</b>，如果没有data-func或dat-part属性，<b>源数据</b>将直接输出 。</h2>
+                <ol>
+                    <li>
+                        <div>字面量数据源。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.string"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td><div data-source='我是字面量'></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>JS对象数据源：当属性值的首个字母为“$”时，<span data-source=$jp.logo></span> 从页面中获取同名JS对象值。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.jsString"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        jp.docValue = '我是JS变量值';
+                                    </script>
+                                    <div data-source='$jp.docValue'></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>AJAX数据源：字面量或对应的JS对象是URL时，<span data-source=$jp.logo></span> 通过AJAX请求该URL获取数据。</div>
+                        <table class="example">
+                            <tr>
+                                <td>info.txt</td>
+                                <td data-source="/jpart/examples/file/info.txt"></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.file"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        jp.docFile = '/jpart/examples/file/info.txt';
+                                    </script>
+                                    <div data-source='$jp.docFile'></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>应用data-source时：input、select标签，数据作value值； src标签，数据作src值; script, link标签，如果数据为url则作为src, href值。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td>
+                                    <code>
+                                        <span data-source="$jp.code.input"></span><br>
+                                        <span data-source="$jp.code.select"></span><br>
+                                        <span data-source="$jp.code.img"></span>
+                                    </code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <input autocomplete='off' type='text' data-source='jpart' /><br>
+                                    <select data-source='3' >
+                                        <option value='0'> Angular </option>
+                                        <option value='1'> React </option>
+                                        <option value='2'> Vue </option>
+                                        <option value='3'> jpart </option>
+                                    </select><br>
+                                    <img data-source='/jpart/examples/ui/image/logo.png' />
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h2 id="data-func">二、data-func 属性指定处理函数，处理函数接收<b>源数据</b>为第一个参数，返回数据定义为<b>应用数据</b>，如果没有data-part属性，<b>应用数据</b>将直接输出。</h2>
+                <ol>
+                    <li>
+                        <div>调用函数名与data-func属性值相同的函数</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.func"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        jp.docFunc = function(data){
+                                            return data + ': 我是JiangYouhua';
+                                        }
+                                    </script>
+                                    <div data-source='jpart' data-func='jp.docFunc'></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>函数约定为：第一个参数是传入的数据，属性值内其它参数随后，并返回新数据</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.funcArgs"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        jp.docFuncArgs = function(data, a, b, c){
+                                            return data = {
+                                                data:data,
+                                                number:a + b + c
+                                            };
+                                        }
+                                    </script>
+                                    <div data-source='jpart' data-func='jp.docFuncArgs(1, 2, 3)'></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h2 id="data-part">三、data-part 属性指定应用组件，应用组件是指继承 <span data-source=$jp.logo></span> 中PART类的子类，它接收<b>应用数据</b>或<b>源数据</b>，模式化为HTML字符串。</h2>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>data-config属性指定组件参数，如"图片预览"，确定6个进行分行， 可以通过data-fonfig传入参数6。</strong>
+                <ol>
+                    <li>
+                        <div>使用data-part需要引用属性值同名的类，该类方法会格式化数据并输出HTML字符串。示例加载JNavigation组件，该组显示为导航条。</div>
+                        <table class="example">
+                            <tr>
+                                <td>part</td>
+                                <td><code> &lt;script src='./JNavigation.js' &gt;&lt;/script&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.part"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <div>
+                                        <script>
+                                            jp.docNavigation = [{
+                                                text:'Angular',
+                                                onclick:"alert('Angular')"
+                                            },{
+                                                text:'React',
+                                                onclick:"alert('React')"
+                                            },{
+                                                text:'Vue',
+                                                onclick:"alert('Vue')"
+                                            },{
+                                                text:'jpart',
+                                                onclick:"alert('jpart')"
+                                            }];
+                                        </script>
+                                        <div data-source='$jp.docNavigation' data-part='JNavigation'></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>使用data-part使用data-config，示例中的JNavigation有参数来指当默认选择的菜单项为0，现在改为2</div>
+                        <table class="example">
+                            <tr>
+                                <td>part</td>
+                                <td><code> &lt;script src='./JNavigation.js' &gt;&lt;/script&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.partConfig"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <div>
+                                        <div data-source='$jp.docNavigation' data-part='JNavigation' data-config="2"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>使用data-part需要引用属性值同名的类，必需是PART类的子类，并实现forContent方法，更多信息请在<a>PART组件</a>中了解。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code>
+                                    /**<br>
+                                    * JNavigation, 站点导航<br>
+                                    * Jiang Youhua 2019.01.10<br>
+                                    */<br><br>
+
+                                    let JNavigation = function() {<br>
+                                    PART.apply(this, arguments);<br>
+                                    &nbsp;&nbsp;&nbsp;(function(self, args) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let a = Array.prototype.slice.call(args);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.SetArgs(a);<br>
+                                    &nbsp;&nbsp;&nbsp;})(this, arguments);<br>
+                                    }<br>
+                                    <b>JNavigation.prototype = new PART()</b><br>
+                                    <b>JNavigation.prototype.forContent = function()</b> {<br>
+                                    &nbsp;&nbsp;&nbsp;let div = new HTML();<br>
+                                    &nbsp;&nbsp;&nbsp;for(let x = 0; x < this._data.length; x ++) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let obj = this._data[x];<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!obj.text || !obj.href) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("JNavigation Data's text or href is null");<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let a = new HTML("a", obj.text);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x == parseInt(this._config)){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.AddClass("action");<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let i in obj){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if( i == "text"){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.AddAttr(i, obj[i]);<br>
+                                    &nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;if(!this._config) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.AddCss("width", 100 / this._data.length + "%");<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;div.AddContent(a);<br>
+                                    &nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;this._html = div;<br>
+                                    &nbsp;&nbsp;&nbsp;this._result = this._id;<br>
+                                    }
+                                </code></td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h2 id="data-back">四、data-back 的属性指定回调函数，在数据输出后被调用。</h2>
+                <ol>
+                    <li>
+                        <div>调用函数名与data-back属性值相同的函数。示例中JNavigationxe组件输出后会返回ID，回调函数所要做的是基于该ID改索引为“0”的菜单项底色。</div>
+                        <table class="example">
+                            <tr>
+                                <td>part</td>
+                                <td><code> &lt;script src='./JNavigation.js' &gt;&lt;/script&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.back"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <div>
+                                        <script>
+                                            jp.docIndex = 0;
+                                            jp.docBack = function (id) {
+                                                let dom =document.getElementById(id).querySelectorAll("a");
+                                                dom[jp.docIndex].style.background = "#ff8888";
+                                            } </script>
+                                        <div data-source='$jp.docNavigation' data-part='JNavigation'
+                                             data-back='jp.docBack'></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>函数约定为：第一个参数是PART子类的result值，属性值内其它参数随后。示例中JNavigationxe组件输出后会返回ID，回调函数所要做的是基于该ID改索引为自己传入值的菜单项底色。</div>
+                        <table class="example">
+                            <tr>
+                                <td>part</td>
+                                <td><code> &lt;script src='./JNavigation.js' &gt;&lt;/script&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.backArgs"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <div>
+                                        <script>
+                                            jp.docBackArgs = function(id, num){
+                                                let dom =document.getElementById(id).querySelectorAll("a");
+                                                dom[num].style.background = "#ff8888";
+                                            } </script>
+                                        <div data-source='$jp.docNavigation' data-part='JNavigation'
+                                             data-back='jp.docBackArgs(2)'></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h2 id="data-affect">五、data-affect 属性值为CSS选择器，在data-source中及JS事件中有效。</h2>
+                <ol>
+                    <li>
+                        <div>在data-source中，在数据输出后施加影响，更新CSS选择器区域。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.affect"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        jp.docInput = 'Hello word';
+                                        jp.docAffect = function(data){
+                                            jp.docInput = data + ': Hello Jiang Youhua';
+                                        }
+                                    </script>
+                                    <div data-source='jpart' data-back='jp.docAffect("A")'
+                                         data-affect='#theInput'></div>
+                                    <input autocomplete='off' id='theInput' type='text' data-source='$jp.docInput' />
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>在JS事件，在事件完成之后施加影响，更新CSS选择器区域。可以在示例中输入框1中试试。</div>
+                        <table class="example">
+                            <tr>
+                                <td>code</td>
+                                <td><code data-source="$jp.code.affectEvent"></code></td>
+                            </tr>
+                            <tr>
+                                <td>html</td>
+                                <td>
+                                    <script>
+                                        function jsEvent(it){
+                                            // TODO
+                                        }
+                                    </script>
+                                    1. <input autocomplete='off' type='text' name='jp.docTogether' onkeyup='jsEvent(this)'
+                                              data-affect='#theTogether' /><br>
+                                    2. <input autocomplete='off' type='text' id='theTogether' data-source='$jp.docTogether' />
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h1 id="part-design">组件设计</h1>
+                <strong>组件设计需要继承PART类，并实现其forContent()方法</strong>
+                <p>为了使用组件具有重用性，您还需要为您的组件添加默认数据及默认设置</p>
+                <hr><br>
+                <h2 id="part-base">一、组件类的基本结构与设计要求</h2>
+                <ol>
+                    <li>
+                        <div>下面设计一个最简单的组件类</div>
+                        <table class="example">
+                            <tr>
+                                <td>继承</td>
+                                <td><code>
+                                    /**<br>
+                                    * JOther, 组件示例<br>
+                                    * Jiang Youhua 2019.01.10<br>
+                                    */<br><br>
+
+                                    let JOther = function() {<br>
+                                    &nbsp;&nbsp;&nbsp;PART.apply(this, arguments);<br>
+                                    &nbsp;&nbsp;&nbsp;(function(self, args) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let a = Array.prototype.slice.call(args);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.SetArgs(a);<br>
+                                    &nbsp;&nbsp;&nbsp;})(this, arguments);<br>
+                                    }<br>
+                                    JOther.prototype = new PART()
+                                </code></td>
+                            </tr>
+                            <tr>
+                                <td>forContent</td>
+                                <td><code>
+                                    JOther.prototype.forContent = function() {<br>
+                                    &nbsp;&nbsp;&nbsp;<b>// 判断数据是否有效</b><br>
+                                    &nbsp;&nbsp;&nbsp;if(!this._data || !this._data.text){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+                                    &nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;<b>// 通过HTML类来实现组件</b><br>
+                                    &nbsp;&nbsp;&nbsp;let div = new HTML('div', this._data.text);<br>
+                                    &nbsp;&nbsp;&nbsp;for(let x  in this._data) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( x == 'text'){<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>// 非应用数据默认处理为属性</b><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;div.Attr(x, this._data[x]);<br>
+                                    &nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;<b>// 将结果赋予根对象</b><br>
+                                    &nbsp;&nbsp;&nbsp;this._html = div;<br>
+                                    &nbsp;&nbsp;&nbsp;<b>// 将转入回调函数的数据赋予返回结果</b><br>
+                                    &nbsp;&nbsp;&nbsp;this._result = this._id;<br>
+                                    }</code></td>
+                            </tr>
+                            <tr>
+                                <td>默认数据</td>
+                                <td><code>
+                                    /**<br>
+                                    * 默认数据<br>
+                                    * text: not null, 文字<br>
+                                    * 其它键值为各项标签属性<br>
+                                    */<br>
+                                    JNavigation.prototype._data = {<br>
+                                    &nbsp;&nbsp;&nbsp;text:'JOther组件示例文字',<br>
+                                    &nbsp;&nbsp;&nbsp;'class':'Other' <b>// 与JS有冲突字段请使用引号</b><br>
+                                    };
+                                </code></td>
+                            </tr>
+                            <tr>
+                                <td>默认配置</td>
+                                <td><code>
+                                    /**<br>
+                                    * 默认配置<br>
+                                    * 该组件没有配置参数<br>
+                                    */<br>
+                                    JNavigation.prototype._data = null;
+                                </code></td>
+                            </tr>
+                            <tr>
+                                <td>引用组件</td>
+                                <td><code>
+                                    &lt;script <b>src='./JOther.js'</b> &gt;&lt;/script&gt;<br>
+                                    &lt;div  data-part='JOther' data-source='' &gt;&lt;/div&gt;
+                                </code></td>
+                            </tr>
+                            <tr>
+                                <td>引用组件</td>
+                                <td><div data-part='' data-source=''>JOther组件示例文字</div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <div>组件设计要求，红色项必需严格实现</div>
+                        <table class="example">
+                            <tr>
+                                <td><b>PART子类</b></td>
+                                <td>所有组件必须是PART的子类，否则无法支持</td>
+                            </tr>
+                            <tr>
+                                <td><b>forContent</b></td>
+                                <td>所有组件类，必须实现方法同时需要将设计对象赋于this._html</td>
+                            </tr>
+                            <tr>
+                                <td>默认数据</td>
+                                <td>默认数据是让使用者更好的了解该组件需要传入哪种类型的数据</td>
+                            </tr>
+                            <tr>
+                                <td>默认设置</td>
+                                <td>默认设置是让使用者更好的了解设置对组件的影响</td>
+                            </tr>
+                            <tr>
+                                <td>事件完备</td>
+                                <td>组件需要事件支持时需要在组件内完成，尽量减少使用者编辑JS代码</td>
+                            </tr>
+                            <tr>
+                                <td>样式完备</td>
+                                <td>组件需要提供默认的CSS样式以支撑其UI</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+                <h2 id="part-interface">二、组件类的基本接口</h2>
+                <ol>
+                    <li>
+                        <div><span data-source=$jp.logo></span> 在HTML标签应用的流程中，您可能无法获取该组件对象。</div>
+                    </li>
+                    <li>
+                        <div>如果您决定在JS中使用它，它有以下方法可调用</div>
+                        <table class="example">
+                            <tr>
+                                <td>setIt()</td>
+                                <td>设置根对象</td>
+                            </tr>
+                            <tr>
+                                <td>setData()</td>
+                                <td>传入数据</td>
+                            </tr>
+                            <tr>
+                                <td>setConfig()</td>
+                                <td>传入配置</td>
+                            </tr>
+                            <tr>
+                                <td>Html()</td>
+                                <td>返回 <span data-source=$jp.logo></span> 内置的HTML对象</td>
+                            </tr>
+                            <tr>
+                                <td>Out()</td>
+                                <td>输出</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+                <hr><br>
+            <h1 id="default-class">内置类说明</h1>
+            <strong><span data-source=$jp.logo></span> 内置类有，WEB, PART, HTML, URL等</strong>
+            <p>为了您更好的使用 <span data-source=$jp.logo></span> 框架，您需要了解内置类。</p>
+            <hr><br>
+            <h2 id="web-class">一、WEB类</h2>
+            <ol>
+                <li>
+                    <div>WEB.Alert(message, duration), 默认3000毫秒</div>
+                    <table class="example">
+                        <tr>
+                        <td>Code</td>
+                        <td><code>
+                            &lt;button onclick="WEB.Alert('WEB.Alert is ok')"&gt;Alert&lt;/button&gt;
+                        </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <div><button onclick="WEB.Alert('WEB.Alert is ok')">Alert</button></div>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>WEB.Loading(dom, end), 默认为启动</div>
+                    <table class="example">
+                        <tr>
+                            <td>Code</td>
+                            <td><code>
+                                &lt;button onclick="WEB.Loading()"&gt;Loading Start&lt;/button&gt;<br>
+                                &lt;button onclick="WEB.Loading(null,1)"&gt;Loading End&lt;/button&gt;
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <button onclick="WEB.Loading()">Loading Start</button>
+                                <button onclick="WEB.Loading(null,1)">Loading End</button>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ol>
+            <hr><br>
+            <h2 id="html-class">二、HTML类，输出HTML字符串的类</h2>
+            <ol>
+                <li>
+                    <div>HTML()，构造函数</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML("div", "text", "class='action'");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div class='action'&gt;text&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>SetTag()，设置HTML对象的标签</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetTag("p")
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;p&gt;&lt;/p&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>SetAttr()，清空HTML对象中所有的属性，并设置新属性</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let btn = new HTML("btn", "button");<br>
+                                div.SetAttr("onclick", "alert(1)")
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;button onclick='alert(1)'&gt;&lt;/button&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>AddAttr()，为HTML对象添加新属性</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let btn = new HTML("btn", "button");<br>
+                                btn.AddAttr("type", "button");<br>
+                                btn.AddAttr("onclick", "alert(1)");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;button onclick='alert(1)' type="button"&gt;&lt;/button&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                <div>SetClass()，清空HTML对象中class属性的所有值，并设置新值</div>
+                <table class="example">
+                    <tr>
+                        <td>JavaScript</td>
+                        <td><code>
+                            let div = new HTML();<br>
+                            div.SetClass("action");
+                        </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Html</td>
+                        <td>
+                            <code>
+                                &lt;div class="action"&gt;&lt;/div&gt;
+                            </code>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+                <li>
+                    <div>AddClass()，添加HTML对象中class属性的新值</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetClass("action");<br>
+                                div.AddClass("hot");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div class="action hot"&gt;&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>SetCss()，空HTML对象中style属性的所有值，并设置新值</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetCss("width", "300px");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div style="width: 300px"&gt;&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>AddCss()，添加HTML对象中style属性的新值</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetCss("width", "300px");<br>
+                                div.AddCss("height", "300px");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div style="width: 300px; height: 300px"&gt;&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>SetContent()，清空HTML对象的内容，并添加新内容</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetContent("text");
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div&gt;text&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>AddContent()，添加HTML对象的内容</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetContent("text");<br>
+                                div.AddContent(",txt")
+                            </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Html</td>
+                            <td>
+                                <code>
+                                    &lt;div&gt;text.txt&lt;/div&gt;
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>Element()，将HTML转为DOM节点，可应于原生的DOM操作中</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetContent("text");<br>
+                                div.Element()
+                            </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <div>String()，将HTML转为HTML字符串</div>
+                    <table class="example">
+                        <tr>
+                            <td>JavaScript</td>
+                            <td><code>
+                                let div = new HTML();<br>
+                                div.SetContent("text");<br>
+                                div.String()
+                            </code>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ol>
+            <hr><br>
+                <h1 id="document-end">流程说明</h1>
+                <strong><span data-source=$jp.logo></span> 的流程是加载数据经过function处理后输出并调用back function</strong>
+                <h2 id="nodes-text"> 一、<span data-source=$jp.logo></span> 加载数据的流程是：</h2>
+                <ol>
+                    <li> 获取<a>data-source</a>属性值，获取值source</li>
+                    <li> 判断该值是否有效？否：退出，是：传入“$”处</li>
+                    <li> “$”处，判断该值的首字母是否为“$”，否：传入url处，是：进入value处</li>
+                    <li> value处，以除首字母的值作JS变量获取值，传入url处</li>
+                    <li> url处，判断传入值是否为url，否：进入节点1，是：进入response处</li>
+                    <li> response处，发起AJAX请求，获取请数据，进入节点1</li>
+                    <li> 获取<a>data-function</a>属性值，获取值function？否：进入节点2，是：传节点1数据返回数据到接点2</li>
+                    <li> 获取<a>data-part</a>属性值，获取值part？否：输出，是：接收有效的<a>data-config</a>属性值和节点1数据后输出</li>
+                    <li> 获取<a>data-back</a>属性值，有:接收part返回值调用该函数</li>
+                    <li> 获取<a>data-affect</a>属性值，有重调该流程</li>
+                </ol>
+                <h2 id="nodes-image"> 二、<span data-source=$jp.logo></span> 流程图：</h2>
+                <div><img src="./examples/ui/image/node.png" height="610" width="800"/> </div>
+                <hr><br>
+            </td>
+        </tr>
+    </table>
+</div>

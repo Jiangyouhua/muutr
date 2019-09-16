@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>APP配置</title>
+    <link rel="stylesheet" type="text/css" href="/html/ui/default.css">
+    <script src="/html/Part/JPartCore.js"></script>
+    <script src="/html/Part/JTable.js"></script>
+    <script>
+        var format = function (re) {
+            if (re.status == 0){
+                Web.Alert(re.info)
+                return
+            }
+            return re.data[0]
+        }
+
+        var edit = function (it, s) {
+            s = Web.Base64ToString(s)
+            pusher = JSON.parse(s)
+            Web.Parse("#form")
+        }
+
+        // 表单过滤函数
+        var filter = function (it) {
+            var datas = it.querySelectorAll("[name]")
+            for(var i = 0; i < datas.length; i++){
+                if(datas[i].value.length == 0){
+                    Web.Alert("所有数据项均不能为空")
+                    return false
+                }
+            }
+
+            return true
+        }
+
+        // 提交完成处理
+        var router = function (data, it) {
+            // 请求失败
+            if (data.code == 0) {
+                Web.Alert(data.info)
+                return
+            }
+            Web.Alert("数据提交成功")
+        }
+    </script>
+</head>
+<body>
+
+<!--广告-->
+<table class="full content">
+    <tr>
+        <!--表单区-->
+        <td id="left">
+            <form id="form" data-source="@/admin.php?handle=Config&func=GetData" data-form-action="@/admin.php?handle=Config&func=SetData"
+                  data-form-filter="filter" data-form-router="router" data-func="format()">
+                <table class="full">
+                    <thead>
+                    <tr>
+                        <th colspan="2">
+                            <button type="submit">提交</button>&nbsp;<button type="reset" onclick="data=null">重置</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td  class="percentage45"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="right">APP名称：</td>
+                        <td class="left"><input name="name" type="text" placeholder="目图"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">APP口号：</td>
+                        <td class="left"><input name="explain" type="text" placeholder="遇见明天的你"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">分享说明：</td>
+                        <td class="left"><input name="share" type="text" placeholder="一起为明天的你加油"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">主域服务器：</td>
+                        <td class="left"><input name="server" type="text" placeholder="https://muutr.com"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">数据地址：</td>
+                        <td class="left"><input name="back" type="text" placeholder="https://muutr.com/back.php"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">同步地址：</td>
+                        <td class="left"><input name="sync" type="text" placeholder="https://muutr.com/sync.php"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">文件地址：</td>
+                        <td class="left"><input name="file" type="text" placeholder="https://muutr.com/file"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">上传地址：</td>
+                        <td class="left"><input name="upload" type="text" placeholder="https://muutr.com/upload.php"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">推送地址：</td>
+                        <td class="left"><input name="socket" type="text" placeholder="ws://muutr.com/chat.php"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

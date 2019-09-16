@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>权限设置</title>
+    <link rel="stylesheet" type="text/css" href="/html/ui/default.css">
+    <script src="/html/Part/JPartCore.js"></script>
+    <script src="/html/Part/JSelect.js"></script>
+    <script src="/html/Part/JTable.js"></script>
+    <script>
+        var user = {}
+        var config = {
+            keys: ["uid",  "status", "edit"],
+            alias: ["年月日", "状态", "编辑"],
+        }
+        var format = function (data) {
+            if (!(data instanceof Array)) {
+                return data
+            }
+
+            // 保存
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i]
+                obj.uid = obj.uid.substr(0,4)+"-"+obj.uid.substr(4,2)+"-"+obj.uid.substr(6,2)
+                // 加编辑按钮
+                var s = JSON.stringify(obj)
+                s = Web.StringToBase64(s)
+                // 处理状态显示文字
+                obj.status = obj.status == 1 ? "节假日" : "工作日"
+                var edit = new HTML("button", "编辑")
+                edit.AddAttr("onclick", "edit(this, '" + s + "')")
+                obj.edit = edit
+
+            }
+            return data
+        }
+
+        var edit = function (it, s) {
+            s = Web.Base64ToString(s)
+            user = JSON.parse(s)
+            Web.Parse("#form")
+        }
+
+        // 表单过滤函数
+        var filter = function (it) {
+            return true
+        }
+
+        // 提交完成处理
+        var router = function (data, it) {
+            // 请求失败
+            if (data.code == 0) {
+                Web.Alert(data.info)
+                return
+            }
+            Web.Alert("数据提交成功")
+            Web.Parse("#list")
+        }
+    </script>
+</head>
+<body>
+
+<!--广告-->
+<table class="full content">
+    <tr>
+        <!--表单区-->
+        <td id="left" class="percentage30">
+            <form id="form" data-source="$user" data-form-action="/admin.php?handle=Holiday&func=SetWithUid"
+                  data-form-filter="filter" data-form-router="router">
+                <table class="full">
+                    <thead>
+                    <tr>
+                        <th colspan="2">
+                            <button type="submit">提交</button>&nbsp;<button type="reset" onclick="data=null">重置</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="right percentage25">时间</td>
+                        <td><input name="uid" type="date"></td>
+                    </tr>
+                    <tr>
+                        <td class="right">状态</td>
+                        <td>
+                            <select name="status">
+                                <option value="1">休息日</option>
+                                <option value="0">工作日</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </td>
+        <!--表格区-->
+        <td id="right">
+            <div id="list" data-part="JTable" data-source="@/admin.php?handle=Holiday&func=GetWithYear" data-config="$config"
+                 data-func="format()"></div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

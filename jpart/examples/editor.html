@@ -1,0 +1,53 @@
+<div class="editor">
+    <script>
+        jp.editorValue = '';
+        jp.updateEditor = function () {
+            jp.editorValue = document.getElementById("e").innerText;
+        }
+        jp.selectCode = function (key) {
+            document.getElementById('e').innerHTML = jp.code[key];
+            document.getElementById('htmlShow').innerText = '';
+        }
+    </script>
+    <table>
+        <tr>
+            <td colspan="2">
+                <h2>* 您可以在左边框中编辑写您的代码，Update后，结果将在右边框呈现，本编辑器只支持jpart框架。</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>CODE</code>
+                <button style="float:right" type="button" onclick="jp.updateEditor()" data-affect="#htmlShow">Update</button>
+            </td>
+            <td ><code  style="float:right">HTML</code></td>
+        </tr>
+        <tr>
+            <td>
+                <div id="e" contenteditable="true"></div>
+            </td>
+            <td style="vertical-align: middle">
+                <div id="htmlShow" data-source="$jp.editorValue"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="jp.selectCode('string')">data-source 字面量</button>
+                <button onclick="jp.selectCode('jsString')">data-source JS变量</button>
+                <button onclick="jp.selectCode('file')">data-source file加载</button>
+                <button onclick="jp.selectCode('ajax')">data-source AJAX请求</button>
+                <button onclick="jp.selectCode('input')">data-source input属性</button>
+                <button onclick="jp.selectCode('select')">data-source select属性</button>
+                <button onclick="jp.selectCode('img')">data-source img属性</button>
+                <button onclick="jp.selectCode('func')">data-func 不带参数</button>
+                <button onclick="jp.selectCode('funcArgs')">data-func 带参数</button>
+                <button onclick="jp.selectCode('part')">data-part 不带参数</button>
+                <button onclick="jp.selectCode('partConfig')">data-part 带参数</button>
+                <button onclick="jp.selectCode('back')">data-back 不带参数</button>
+                <button onclick="jp.selectCode('backArgs')">data-back 带参数</button>
+                <button onclick="jp.selectCode('affect')">data-affect 与数据加载</button>
+                <button onclick="jp.selectCode('affectEvent')">data-affect 与事件</button>
+            </td>
+        </tr>
+    </table>
+</div>

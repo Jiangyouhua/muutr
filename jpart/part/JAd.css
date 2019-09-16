@@ -1,0 +1,16 @@
+[data-part="JAd"]>div{
+    font-family: 'Indie Flower', cursive;
+    font-size: 20rem;
+    padding-top: 5rem;
+    line-height: 10rem;
+    text-align: center;
+}
+
+[data-part="JAd"] span{
+    display: inline-block;
+    width: .6rem;
+    height: .6rem;
+    border: #fff 1px solid;
+    border-radius: .3rem;
+    margin: 0rem 1rem;
+}

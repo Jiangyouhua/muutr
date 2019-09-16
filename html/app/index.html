@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Muutr</title>
+    <style>
+        *{margin:0;padding:0;}
+        body{
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            font: 100% "Microsoft YaHei", 微软雅黑, arial, simsun, 宋体;
+            font-weight: 100;
+            color: #222;
+            line-height: 180%;
+        }
+        table{
+            width: 960px;
+            border:0;
+            border-collapse:collapse;
+        }
+
+        a:link {
+            color:#000000;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:visited {
+            color:#000000;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:hover {
+            color:#dddddd;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        a:active {
+            color:#eeeeee;
+            font-weight: 100;
+            text-decoration:none;
+        }
+        .w100{
+            max-width: 100%;
+        }
+        .font200{
+            font-size: 200%;
+            font-weight: 100;
+        }
+        span{
+            vertical-align: top;
+            display: inline-block;
+        }
+        .border{
+            border:1px solid #eeeeee;
+            padding: 0;
+        }
+        .main{
+            width: 960px;
+            text-align: center;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 10px;
+        }
+        #top{
+            background-color: olivedrab;
+            height: 5px;
+        }
+        .assist{
+            background-color: #444444;
+            height: 80px;
+            color:#dddddd;
+        }
+        .left{
+            text-align: left;
+        }
+        .right{
+            text-align:right;
+        }
+        .ad{
+            text-align: center;
+            background-color: RGB(30,35,40);
+            height: 300px;
+        }
+        .menu{
+            background-color: olivedrab;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+        }
+        .table td{
+            border-bottom: 1px solid #aaaaaa;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .table th{
+            border-bottom: 1px solid #aaaaaa;
+            border-top: 2px solid #aaaaaa;
+        }
+        .about{
+            background-image: url("/html/image/pageWeb.png");
+            background-position: right bottom;
+            background-repeat: no-repeat;
+            background-size:auto 350px;
+            -moz-background-size:auto 100%;
+            text-align: left;
+        }
+        .scene{
+            color: white;
+            padding-top: 20px;
+            vertical-align: top;
+            margin:0 2px 2px 2px;
+            height: 300px;
+        }
+        .title{
+            font-size: 150%;
+            font-weight: 100;
+            padding: 50px 0 20px 0;
+            color: olivedrab;
+            text-align: left;
+        }
+        .explain{
+            padding: 0 0 10px 0;
+            text-align: left;
+        }
+        .user{
+            width: 166px;
+            height: 301px;
+            background-image: url("/html/image/userWeb.png");
+            background-size: 183px 384px;
+            background-repeat: no-repeat;
+            padding: 45px 9px 45px 9px;
+            display: inline-block;
+            margin: 4px;
+        }
+        .pad20{
+            padding: 10px 20px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .line{
+            height: 1px;
+            background-color: #dddddd;
+            margin-bottom: 20px;
+        }
+        b{
+            color: #000000;
+        }
+        .footer{
+            margin: 20px;
+            font-weight: 100;
+            display: inline-block;  
+        }
+        .toTop{
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            font-size: 200%;
+            font-weight: 100;
+        }
+        .logoText{
+            display: inline-block;
+            width: 90px;
+            height: 30px;
+            vertical-align: bottom;
+            background-image: url("/html/image/logoText.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+    <script src="//html/Part/JPartCore.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <div id="top"></div>
+    <div class="assist">
+        <div class="main">
+            <table width="980">
+                <tr>
+                    <td class="left" height="80"><img src="/html/image/logo.png" height="60"></td>
+                    <td class="right">Our Little Assistant &nbsp;&nbsp;|&nbsp;&nbsp;<a href="/index.html">🇨🇳</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- AD -->
+    <div class="ad">
+        <div class="main"> <img src="/html/image/adWeb.png" height="300"></div>
+    </div>
+    <!-- menu -->
+    <div class="menu">
+        <div class="main">
+            <table width="980">
+                <tr>
+                    <td><a href="#about">Forword</a></td>
+                    <td><a href="#goal">Audience</a></td>
+                    <td><a href="#scene">Scenarios</a></td>
+                    <td><a href="#function">Function</a></td>
+                    <td><a href="#team">Func•Team</a></td>
+                    <td><a href="#object">Func•Task</a></td>
+                    <td><a href="#note">Func•Note</a></td>
+                    <td><a href="#other">Func•Other</a></td>
+                    <td><a href="#last">Last</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="main">
+        <table id="download">
+            <tr>
+                <td class="title" colspan="3">
+                      Muutr is Obsession
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-right: 10px"><img class="border" src="/html/image/logoWeb.png" width="300"> </td>
+                <td class="left">
+                    Muutr is to elaborate an individual or team to create,<br>
+                    goal management, collaboration and communication platform.<br>
+                    It can help reduce an individual or team work, communication and management costs, <br>
+                    improve work efficiency and the degree of completion of a task,<br>
+                    promote the realization of individual and team goals.<br><br>
+                    Install iOS version, <b>Scan QRCode</b>，go to App Store.
+                </td>
+                <td valign="top"><a href="/.well-known/apple-app-site-association"><img src="/html/image/code.png" width="200"></a></td>
+            </tr>
+        </table>
+        <br>
+        <div class="line"></div>
+        <div id="about" class="title">Forward</div>
+        <table>
+            <tr>
+                <td colspan="3" class="about">
+                    Muutr is a efficiency APP. In recent years, I also want to achieve the first goal. <br>
+
+                    Life, we need to continue to have goals to achieve, have their own, with their own friends, their own and the team. I always wanted to do an APP, to help us better and faster to achieve the goal. <br>
+
+                    For example, I recently had the goal of fitness, Muutr can help me: <br>
+                    1、 Category management: I used to have a goal of learning, now add a fitness goal. <br>
+                    2、 Set goals, determine the periodicity goal: To develop fitness goals, determined every Monday, Wednesday and Friday at 8:30 pm before a complete workout at the gym for half an hour. <br>
+                    3、 Each cycle check goal: Every day, open the APP, Muutr will remind you that this time the task is completed? It also provides a countdown to the deadline? <br>
+                    4、 Record bit process: Gym teacher said, starting to be slower<br>
+                    5、 Note the process of revenue: Buy running shoes, spending $588<br>
+                    6、 Can remind you: Do not forget the task. I am soo busy , so set up a task on Muutr cut-off two hours before the time to remind ourselves; <br>
+                    7、 Can help you countdown: Muutr told you, an hour's running time is up. The do a yoga；<br>
+                    8、 Can move forward with mate: Please Kitty join fitness group, together to fitness;<br>
+                    9、 Can be composed of people with the common interests of the team: the gym teacher join to fitness group; <br>
+                    10、To achieve a division of labor: Gym teacher may not need to run and do yoga, just staring at group, so he did not claim the running and doing yoga tasks; <br>
+                    11、To know tasks status of the partners: Kitty is not completed yesterday's gym a half hour fitness task Yes;<br>
+                    12、Can communicate with partners: Who knows,  Why did not Kitty go to the gym yesterday, ah? <br>
+                    13、Can be performed with partners whisper: Kitty, I want to tell you a secret;<br>
+                    14、Can hide your identity: In the group, partners only know your nickname; <br>
+
+                    Then, in 2017 beginning in April, I decided to do Muutr. <br>
+                    Whole year to complete, on-line submission time is May 2018. <br>
+                    I use a Muutr conducted its own on-line test management, feel better.<br>
+
+                </td>
+            </tr>
+        </table>
+
+        <div id="goal" class="title">Goal Audience</div>
+        <table>
+            <tr>
+                <td colspan="4" class="left">
+                    Muutris prepared for you. When you identify a goal, and are willing to work hard, step by step until a stick, you're dumb audience. Wood one can help you, let you become the goal firm will of tough, great idea, holding fast action of people.<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img class="border" src="/html/image/guideYou1.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou2.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou3.png" width="238"></td>
+                <td><img class="border" src="/html/image/guideYou4.png" width="238"></td>
+            </tr>
+        </table>
+
+        <div id="scene" class="title">Application Scenarios</div>
+        <table>
+            <tr>
+                <td colspan="6" class="left">
+                    Muutr on your side. Whether you're trying to study, work, life, health, pleasure or for your team, it is always by your side. It can help you develop and implement your plan, planning, living arrangements, health habits, interests orientation, teamwork and so on.<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="/html/image/sceneWeb1.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb2.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb3.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb4.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb5.png" width="157"></td>
+                <td><img src="/html/image/sceneWeb6.png" width="157"></td>
+            </tr>
+            <tr>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(89,117,157,.3); vertical-align: top">Study</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(94,77,70,.3);">Work</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(158,119,88,.3);">Live</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(157,72,51,.3);">Health</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(145,108,53,.3);">Interest</div></td>
+                <td class=" font200"> <div class="scene" style="background-color: RGBA(197,129,120,.3);">Team</div></td>
+            </tr>
+        </table>
+
+        <div id="function" class="title">Main Function</div>
+        <table>
+            <tr>
+                <td colspan="5" class="left">
+                    Muutr support you. Wood provide a group (classification), task (goal), task card (goal card), chat rooms (class notes), notes and the balance of payments, the search task (goal), the countdown clock, two-dimensional code scanning and other major functions. Wooden help you to better and more efficiently schedule, manage, carry out your task (goal), so you better grow up.<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="/html/image/online1.png" width="192"></td>
+                <td><img src="/html/image/online2.png" width="192"></td>
+                <td><img src="/html/image/online3.png" width="192"></td>
+                <td><img src="/html/image/online4.png" width="192"></td>
+                <td><img src="/html/image/online5.png" width="192"></td>
+            </tr>
+        </table>
+        <br>
+        <table><tr>
+        <td class="left"><b>Muutr Main Function List:</b><br><br></td>
+        <tr>
+            <td>
+        <table class="table">
+            <tr>
+                <th width="30" height="50">ID</th><th width="180">Funciton</th><th width="370">Team</th><th>Personal</th>
+            </tr>
+            <tr>
+                <td>1</td><td>Group or Classification</td>
+                <td>Add a group, modify group name, quit the group, ordered as Home Groups tab bar</td>
+                <td>Add categories, category name to modify, delete, classify, sort, classify for the Home tab bar</td>
+            </tr>
+            <tr>
+                <td>2</td><td>Task or Goal</td>
+                <td>Add or modify tasks (include: task explain, repeated way, beginning and ending date, deadline, etc.), unclaimed or abandoned claim the task, shut down tasks, reminders within a set deadline before the transfer service 24</td>
+                <td>Add or modify the goal (include: statement of objectives, repeat mode, start and end dates, deadline, etc.), activate or activate the goal to give up, delete the goal, adjusting the set before the deadline reminder service within 24</td>
+            </tr>
+            <tr>
+                <td>3</td><td>Task Card or Goal Card</td>
+                <td>There are <b>Home Task Card</b> and <b>Cycle Task Cards</b><br>
+                    <b>Home Task Card</b> : Left was recently task status (countdown / OUT, OK two states), compared with the right task explain, the deadline date period, the most recent period, the reminder time and partner complete list.<br>
+                    <b>Cycle Task Card</b> : Left task status, compared with the historical period (countdown / OUT, OK two states), the right was the deadline for each period of time and complete partner list.<br>
+                    Click to confirm this cycle task status task is complete.</td>
+                <td>There are <b>Home Goal Card</b> and <b>Cycle goal card</b><br>
+                    <b>Home Goal Card</b>: the left was the recent goal state (countdown / OUT, OK two states), compared to goal the right description, date period, the deadline for the recent period, the reminder time and partner complete list.<br>
+                    <b>Period Goal Card</b> : Left, compared with the historical period of the goal state (countdown / OUT, OK two states), the right was the deadline for each period of time and complete partner list.<br>
+                    Click goal state confirm that the goal cycle is complete.</td>
+            </tr>
+            <tr>
+                <td>4</td><td>Chat Room or Class Notes</td>
+                <td>Group chat rooms, within this group of partners can be sent in text, pictures, camera, sound recording, recording frequency, graffiti, geographic location information content. While part of the partner @ private chat, send and share to social APP invite friends to join the group.</td>
+                <td>In this send text, pictures, camera, sound recording, recording frequency, graffiti, location information for the content to make remarks in this classification.</td>
+            </tr>
+            <tr>
+                <td>5</td><td>Notes and payments</td>
+                <td>In each task, text, pictures, camera, sound recording, recording frequency, graffiti, location content to take notes. Each note can be added to the balance of payments, and the formation of the balance of payments of the total monthly report, the group monthly report, the task monthly report.</td>
+                <td>In each goal, text, pictures, camera, sound recording, recording frequency, graffiti, location content to take notes. Each note can be added to the balance of payments, and the formation of the balance of payments of the total monthly reports, monthly reports classification, goal monthly report.</td>
+            </tr>
+            <tr>
+                <td>6</td><td>Find the task (goal)</td>
+                <td>Use keywords to search for the task</td>
+                <td>Use keywords to search for the goal</td>
+            </tr>
+            <tr>
+                <td>7</td><td>Countdown Alarm</td><td colspan="2">Providing a countdown alarm within 24 hours. Support simultaneous set multiple alarms, countdown and presented their state.</td>
+            </tr>
+            <tr>
+                <td>8</td><td>Scan QRCode</td><td colspan="2">Provide scan QRCode function, while achieving a group of two-dimensional code sweep provided by wood added to the group to function.</td>
+            </tr>
+
+        </table>
+            </td>
+        </tr>
+            <tr>
+        <td class="left">
+            <br>
+            <p><b>Muutr has some closure: </b></p><br>
+            <p>1、Content, with wooden notes in a chat room (Class Notes) is not copied.</p>
+            <p>2、The text, images, photos, audio, video, graffiti, geographic location stored in Muutr, the third-party software can not be referenced.</p>
+            <p>3、Muutr need only personal account and password information, personal information is not provided more features, as well as personal account and password information is not shared with other users.</p>
+            <p>4、Communication between the partners in the only group of people in the Muutr chat rooms, there is no "add friends" functionality similar. After closing the group, your relationship with the group of partners return to the original state.</p>
+        </td>
+            </tr>
+        </table>
+        <br>
+        <table><tr><td id="team" class="font200" style="color: #ffffff; background-color: lightsalmon; padding: 20px">Guide to the teams for application instructions, please note!</td></tr></table>
+
+        <div class="title">Team Work</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    Muutr Support team collaboration. There is a classification following multiple users, classification becomes group, the group of users to become partners, can achieve teamwork among partners. Partners can add tasks for the team, can claim unclaimed or abandoned tasks, you can view the task completion of each cycle partners can communicate with in chat rooms, private chat partner can @ part. These features simple implementation of the teamwork between the partners in the group.
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. Enter the group settings page : home page, click on the toolbar at the top of the page + sign button , enter the group settings page.</td>
+                <td class="pad20">2. Add group : Group Settings page, click on the title bar at the + button , can be added a new a group.</td>
+                <td class="pad20">3. Add group : Group Settings page, click on the title bar at the + button , can be added a new a group.	3. Set group : Group Settings page, click on the group name to modify the group name; click Sort sortable group name, the impact of the order to the order of the Home tab bar group name; slide left group name delete button, click the Delete button to delete or close the group.</td>
+                <td class="pad20">4. Into the task Page : Home, after adding the group, you can see the different colors of the group name labels on the tab bar. Area under the task area, click on the bottom right of the + button , enter task settings page.</td>
+                <td class="pad20">5. Add Task : task page, the plus label next to create a new task. There task statement when the new task, repetition period, start date, end date, deadline, etc. can be set.</td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/05.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/06.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/07.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/08.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/09.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">6. Management Tasks : Task page, in the heart of No. label displays all the tasks under the current group. Click on the column and right is claimed button can receive the task; click on each field and right are already collar button can give up to receive the task; Left slide has brought the task to display the edit button, click on the Edit button to re-edit the task; Left slide unclaimed task Display Off button click the Close button to close the task that you will not be visible.</td>
+                <td class="pad20">7. Task card : Home, after adding the task, the task area under the tab bar is displayed in the task card. Task cards left was the recent task status (countdown / OUT, OK two states), compared with the right task description, date of beginning and ending time for the task, the date of the repetition period, the most recent period, the deadline for the recent period, the reminder time and partner complete list.</td>
+                <td class="pad20">8. Chat : home page, click on the bottom right corner of the task area information box button , enter the group chat room page. Within partner in this group can send text, pictures, camera, sound recording, recording frequency, graffiti, geographic location information content and to provide not listen identified as recording information.</td>
+                <td class="pad20">9. @ Partner : Chat page, click on the top title bar to enter @ partner page. @ Partner page for the central area of the name partners, you can select @ partner. Chat page when returning from @ partner page title bar shows the section selected list of partners, information is now sent, visible only to selected partners that achieve whisper.</td>
+                <td class="pad20">10.Join Group : Chat page, click on the top of the upper right corner of the More button to enter the page group. There are pages in the group are two ways to allow partners to join the group:<br>
+                    1. Click on the group two-dimensional code bar display button to display a two-dimensional code group, partners can achieve join the group by wooden two-dimensional code scanning capabilities;<br>
+                    2. Click Share to a friend bar Share button to share group information to a third party, to join the group by installing wooden.</td>
+
+            </tr>
+        </table>
+
+        <div id="object" class="title">Tracking goals</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    Muutr Full tracking task for you. The setup task, the wood will as time progresses, the task set by individual item repeat cycle generation task card. Card has a periodic task, timeliness. Among them, home tasks required task card Check the status of your current cycle; task cards page requires periodic task status Check the historical period. Wooden also provide alerts for all tasks, to remind you at a scheduled time, go to complete the task in the current cycle.
+                    TOP
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/mate/06.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/object/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. Load task card : First, there is the timeline below the tab bar. Timeline time span of 6 months (six months), the task area load current task cycle Home task card within six months. Sliding around the timeline , you can change the time on the time axis, while the corresponding change in the Home task card loaded on the task area.</td>
+                <td class="pad20">2. Check current task : Home, left the task card displays the most recent task status (countdown / OUT, OK two states), to complete the task cycle display OK, unfinished displays a countdown to the deadline of the current period, the display timeout OUT . Click recent task status determines whether the most recent periodic tasks.</td>
+                <td class="pad20">3. Check historic task : the home page, click on the task card is the right to enter notes page. Switch to notes page in the cycle label , the label is shown in the following period periodic task card. Home Cycle task card and card similar task, click the cycle task status to determine whether to complete the cycle task.</td>
+                <td class="pad20">4. Add Reminder : Notes page, switch pages in notes to remind label , you can add reminders tab, modify task reminder, task reminder has been set, right-click on the description to remind the Delete button to delete the task reminder. Sending alert information in a systematic way within 24 hours prior to the deadline for each cycle.</td>
+                <td class="pad20">5. Close all reminders : About page, click the Home leftmost toolbar on the button to enter the About page. Click on page in the background to remind bar switch button to turn on or off all alerts have been set.</td>
+
+            </tr>
+        </table>
+
+        <div id="note" class="title">Note And Money</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    Muutr Notes and payments capabilities to support task-added notes to the balance of payments basis. You can add text, recording, photographing and recording frequency, graffiti, location and other information for the notes. At the same time can be added to the balance of payments on each note, add revenue to automatically generate monthly reports, you can view each report. Support delete notes, delete notes and delete the balance of payments.
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/note/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. Enter the page notes : First, click on the task area task card is the right to enter notes page. In switching to the page note notes tab , display the latest task notes down notes tab, the pull can be added earlier notes.</td>
+                <td class="pad20">2. Add notes : notes pages, providing text, audio, photography, recording frequency, graffiti, geographic information note taking functionality to the editing area, edit area under the notes tab. The notes have been added by the time of submission of the near and far from top down.</td>
+                <td class="pad20">3. Add the balance of payments : notes page, below the editing area is the notes area, click on the top right note card notes area of text , you can add or modify notes for the amount of the balance of payments.</td>
+                <td class="pad20">4. Delete notes : notes page, below the editing area is the notes area, click on the notes area note card left corner of the delete button , delete the note, delete the note and delete the balance of payments on the notes.</td>
+                <td class="pad20">5. Check the balance of payments report : Notes page, click on the top left corner of the page $ number buttons to enter the balance of payments report page, income and expenditure statements monthly report page shows the balance of payments current task. Also available on the page to see the total revenue and expenditure reports.</td>
+            </tr>
+        </table>
+
+        <div id="other" class="title">Other Function</div>
+        <table>
+            <tr>
+                <td colspan="5" class="explain">
+                    Muutr other function help you. Provide task search, alarm clock and countdown 24 within, the QRCode scanning.
+                </td>
+            </tr>
+            <tr>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/00.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/01.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/02.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/03.png" ></div></td>
+                <td><div class="user"><img class="w100 border" src="/html/image/other/04.png" ></div></td>
+            </tr>
+            <tr>
+                <td class="pad20">1. Search task : home page, click on the toolbar's search button to enter the search task page, enter the keywords contained in the mission statement at the top of the search task page search box, you can search for related tasks.</td>
+                <td class="pad20">2. Countdown Alarm : home page, click on the toolbar of the alarm button to enter the alarm page, switch to the alarm page + tag number , number + next tab to add a countdown clock in the 24 hour period.</td>
+                <td class="pad20">3. View Countdown Alarm : Alarm page, switch on the alarm page - number label , - number label can be viewed at all effective alarm clock. He left a note listing the information, the countdown time, launch time and end time.</td>
+                <td class="pad20">4. Delete Countdown Alarm : Alarm page, switch on the alarm page - number label , - a list of the right under the label numbers have the delete button and reset button, click the Delete button to delete the alarm, click the reset button to reboot the clock.</td>
+                <td class="pad20">5. Scan the QR code : the home page, click on the toolbar Scan button to enter the two-dimensional code scanning pages. Scanning two-dimensional code on page scan area central region, the alignment may be implemented dimensional code scanning two-dimensional code.</td>
+            </tr>
+        </table>
+
+        <div id="last" class="title">The Last</div>
+        <table>
+            <tr>
+                <td colspan="3" class="explain">
+                     APP named，It is derived from "Wooden" game. "123 wooden", very fond of children at home and we do this game. I prefer the spirit and form of this game, much like it is with this APP: you need to take seriously every step forward, only to do every step close to the goal, have your efforts in checking mechanism; you can enter a person before, It can also be preceded by a bunch of people together into, but your relationship together may also be a team relationship. And so on. There is, I heard eye view of the word, to explain the dictionary is "immediate plan strategy." I also like, but I heard the word person too, so there is no use of one's head with a wooden homonym. In short:<br><br>
+                </td>
+            </tr>
+            <tr>
+                <td class="right font200" width="330">
+                    It's All Right
+                </td>
+                <td><img src="/html/image/aboutWeb.png" height="258"></td>
+                <td class="left font200" width="330">
+                    Let's Go！
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div class="line"></div>
+        <span class="footer"><a href="http://www.miitbeian.gov.cn/"> 鄂ICP备18004060号-1</a></span>
+    </div>
+    <div class="toTop"><a href="#top"> TOP </a></div>
+</body>
+</html>

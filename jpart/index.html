@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="examples/ui/part.css" />
+<link rel="stylesheet" href="part/JAd.css" />
+<link rel="stylesheet" href="part/JNavigation.css" />
+<link rel="stylesheet" href="part/JPreview.css" />
+<link rel="stylesheet" href="part/JBanner.css" />
+<link rel="stylesheet" href="part/JFullText.css" />
+<link rel="stylesheet" href="part/JList.css" />
+<link rel="stylesheet" href="part/JTable.css" />
+<script src="./jpartcore.js"></script>
+<script src="part/JAd.js"></script>
+<script src="part/JNavigation.js"></script>
+<script src="part/JPreview.js"></script>
+<script src="part/JBanner.js"></script>
+<script src="part/JFullText.js"></script>
+<script src="part/JList.js"></script>
+<script src="part/JTable.js"></script>
+<script src="./examples/ui/jszip.min.js"></script>
+<script src="./examples/ui/FileSaver.min.js"></script>
+<script src="./examples/ui/part.js"></script>
+<link href="https://fonts.font.im/css?family=Abel|Indie+Flower|lixukexingshu;" rel="stylesheet">
+
+<title>jpart</title>
+
+<body>
+<!-- header -->
+<div id='head'>
+    <div>
+    <div>
+        <!-- log -->
+        <div data-part="JBanner" data-source="$jp.banner"></div>
+    </div>
+    <!-- ad -->
+    <div id="ad">
+        <div class="ad">
+            <div data-part="JAd" data-source="$jp.ad"></div>
+            <div class = 'load' data-part="JNavigation" data-source="$jp.load" data-config="1"></div>
+        </div>
+    </div>
+    </div>
+    <!-- navigation -->
+    <div id="nav" class="navigation" data-part="JNavigation" data-source="$jp.nav"></div>
+</div>
+
+<!-- body -->
+<div id='body' data-source="$jp.pageUrl"></div>
+
+<!-- footer -->
+<div id='tail'>
+    <div data-part="JFullText" data-source="$jp.tail"> </div>
+</div>
+<div id="top" style="position: fixed; bottom: 5rem; right: 5rem; display: none; width: 6rem; height: 6rem; border-radius: 3rem; background: #FF7D00; line-height: 6rem"><a style="display: block" href="#body">TOP</a></div>
+</body>
+
+</html>
